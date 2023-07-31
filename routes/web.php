@@ -18,5 +18,9 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [App\Http\Controllers\AlumnoController::class,'index'])->name('home'); 
+
+
 Route::post('/alumno/store', [App\Http\Controllers\AlumnoController::class,'store'])->name('alumno.store'); 
 Route::delete('/alumno/delete/{id}', [App\Http\Controllers\AlumnoController::class,'delete'])->name('alumno.delete'); 
+Route::put('/alumno/update/{id}', [App\Http\Controllers\AlumnoController::class,'update'])->name('alumno.update'); 
+Route::get('/alumno/{id}', 'AlumnoController@edit');

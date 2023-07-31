@@ -110,8 +110,61 @@
                                 </div>
                             </div>
                             </div>
+                           
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#modalEditar-{{ $alumno->id }}" class="btn btn-warning btn-sm">Editar</button>
+                            <!-- Modal Editar-->
+                            <div class="modal fade" id="modalEditar-{{ $alumno->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Campos a editar</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- Campos de entrada para editar los datos del Alumno -->
+                                            <form id="formEditarAlumno-{{ $alumno->id }}" action="{{ route('alumno.update', $alumno->id) }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="form-group">
+                                                    <label for="nombre">Nombre</label>
+                                                    <input type="text" class="form-control" id="nombre-{{ $alumno->id }}" name="nombre" value="{{ $alumno->nombre }}">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="apellido">Apellido</label>
+                                                    <input type="text" class="form-control" id="apellido-{{ $alumno->id }}" name="apellido" value="{{ $alumno->apellido }}">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="fechaDeNacimiento">Fecha de Nacimiento</label>
+                                                    <input type="date" class="form-control" id="fechaDeNacimiento-{{ $alumno->id }}" name="fechaDeNacimiento" value="{{ $alumno->fechaDeNacimiento }}">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="telefono">Telefono</label>
+                                                    <input type="text" class="form-control" id="telefono-{{ $alumno->id }}" name="telefono" value="{{ $alumno->telefono }}">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="TZapato">T.Zapato</label>
+                                                    <input type="text" class="form-control" id="TZapato-{{ $alumno->id }}" name="TZapato" value="{{ $alumno->TZapato }}">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="TDePolo">T.de polo</label>
+                                                    <input type="text" class="form-control" id="TDePolo-{{ $alumno->id }}" name="TDePolo" value="{{ $alumno->TDePolo }}">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="TDePantalon">T.de pantalon</label> 
+                                                    <input type="text" class="form-control" id="TDePantalon-{{ $alumno->id }}" name="TDePantalon" value="{{ $alumno->TDePantalon }}">
+                                                </div>
+                                                <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <button class="btn btn-primary" type="submit">Guardar cambios</button>
+                                                </div>
 
-                            <button class="btn btn-warning btn-sm">Editar</button>
+                                            </form>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                          
                         </div>  
                     </td>
                 </tr>
@@ -121,6 +174,8 @@
         </tbody>
 
     </table>
+
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
   </body>
